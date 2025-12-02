@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quiz-champion"
+version = "0.1.0"
+description = "Quiz Questions pour un champion - Culture générale 1990-2025"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Quiz Champion Team"}
+]
+
+dependencies = [
+    "sqlalchemy>=2.0",
+    "rich>=13.0",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "PyQt6>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+quiz-champion = "quiz_champion.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v --cov=src/quiz_champion --cov-report=html --cov-report=term-missing"
